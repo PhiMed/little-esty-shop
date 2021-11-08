@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_07_221757) do
+ActiveRecord::Schema.define(version: 2021_11_07_225745) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,10 +18,10 @@ ActiveRecord::Schema.define(version: 2021_11_07_221757) do
   create_table "contributors", force: :cascade do |t|
     t.string "username"
     t.integer "commit_count"
-    t.bigint "git_hub_repo_id"
+    t.bigint "github_repo_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["git_hub_repo_id"], name: "index_contributors_on_git_hub_repo_id"
+    t.index ["github_repo_id"], name: "index_contributors_on_github_repo_id"
   end
 
   create_table "customers", force: :cascade do |t|
@@ -31,10 +31,9 @@ ActiveRecord::Schema.define(version: 2021_11_07_221757) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "git_hub_repos", force: :cascade do |t|
-    t.string "owner"
+  create_table "github_repos", force: :cascade do |t|
+    t.string "username"
     t.string "name"
-    t.integer "merged_pr_count"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -64,6 +63,7 @@ ActiveRecord::Schema.define(version: 2021_11_07_221757) do
     t.string "description"
     t.integer "unit_price"
     t.bigint "merchant_id"
+    t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["merchant_id"], name: "index_items_on_merchant_id"
@@ -85,7 +85,7 @@ ActiveRecord::Schema.define(version: 2021_11_07_221757) do
     t.index ["invoice_id"], name: "index_transactions_on_invoice_id"
   end
 
-  add_foreign_key "contributors", "git_hub_repos"
+  add_foreign_key "contributors", "github_repos"
   add_foreign_key "invoice_items", "invoices"
   add_foreign_key "invoice_items", "items"
   add_foreign_key "invoices", "customers"

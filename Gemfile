@@ -47,6 +47,8 @@ group :development, :test do
   gem 'simplecov'
   gem 'factory_bot'
   gem 'faker'
+  gem 'faraday'
+  gem 'json'
 end
 
 group :development do

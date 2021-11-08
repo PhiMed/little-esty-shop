@@ -1,3 +1,3 @@
 class Contributor < ApplicationRecord
-  belongs_to :repo
+  belongs_to :github_repo
 end
