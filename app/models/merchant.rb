@@ -3,12 +3,13 @@ class Merchant < ApplicationRecord
   has_many :invoice_items, through: :items
 
   def top_customers
-    Customer.select("customers.*, COUNT(transactions.*) AS transaction_count").joins(
+    items.select("customers.*, COUNT(transactions.*) AS transaction_count").joins(
                          "INNER JOIN invoices ON invoices.customer_id = customers.id
                           INNER JOIN transactions ON transactions.invoice_id = invoices.id
                           INNER JOIN invoice_items ON invoice_items.invoice_id = transactions.invoice_id
                           INNER JOIN items ON items.id = invoice_items.item_id
                           INNER JOIN merchants ON merchants.id = items.merchant_id")
+                          .joins(:invoices)
                           .where("transactions.result = 'success' AND merchants.id = '#{self.id}'")
                           .group(:id)
                           .order(transaction_count: :desc)
