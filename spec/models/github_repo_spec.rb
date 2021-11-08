@@ -7,7 +7,7 @@ RSpec.describe GithubRepo, type: :model do
 
   describe '#name' do
     it 'should return the name of our repo' do
-      repo = GithubRepo.create!(username: 'yosoynatebrown', name:'little-esty-shop')
+      repo = GithubRepo.create
 
       expect(repo.name_of_repo).to eq('little-esty-shop')
     end
@@ -15,9 +15,9 @@ RSpec.describe GithubRepo, type: :model do
 
   describe '#merged_pr_count' do
     it 'should return the number of merged PRs on a repo' do
-      repo = GithubRepo.create!(username: 'yosoynatebrown', name:'little-esty-shop')
+      repo = GithubRepo.create
 
-      expect(repo.merged_pr_count).to eq(21)
+      expect(repo.merged_pr_count).to eq(23)
     end
   end
 end
