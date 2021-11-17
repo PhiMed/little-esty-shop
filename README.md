@@ -2,7 +2,7 @@
 
 [Link to Page](https://quiet-sands-26565.herokuapp.com)
 
-![little-esty-cover](https://user-images.githubusercontent.com/87627363/142256534-5516f9ab-15a8-40f0-aa39-5763380da723.png)
+![Screen Shot 2021-11-17 at 2 18 32 PM](https://user-images.githubusercontent.com/87627363/142290353-4cf44088-8fb9-4126-b603-c1e72984ded7.png)
 
 ## Description
 
